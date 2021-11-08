@@ -1,0 +1,7 @@
+{  
+    "testFiles": "**/*.feature",
+    "env":{
+        "url": "https://www.amazon.in",
+        "mobile_phone": "Oneplus"
+    }
+}
