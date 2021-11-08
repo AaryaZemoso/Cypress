@@ -42,3 +42,16 @@ Feature: Actions
         Then Select "oranges" from select menu
         Then Select "bananas" from select menu
         Then Select multiple items from the select menu
+
+    Scenario: Use .scrollIntoView() and .scrollTo()
+
+        Then Do Horizantal Scroll and View Button
+        Then Do Vertical Scroll and View Button
+        Then Do both scrolls and View Button
+
+        Then Scroll to 300 of Horizontal scroll
+        Then Scroll to "center" of Vertical scroll
+        Then Scroll to "center" with options
+
+    Scenario: Use .trigger()
+        Then Trigger "change" event and set the value to 50

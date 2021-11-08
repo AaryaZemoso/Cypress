@@ -139,3 +139,63 @@ Then("Select multiple items from the select menu", () => {
         .invoke('val')
         .should('deep.equal', ['fr-apples', 'fr-oranges', 'fr-bananas'])
 });
+
+Then("Do Horizantal Scroll and View Button", () => {
+
+    cy.get("#scroll-horizontal button")
+        .should("not.be.visible");
+
+    cy.get("#scroll-horizontal button")
+        .scrollIntoView()
+        .should("be.visible");
+
+});
+
+Then("Do Vertical Scroll and View Button", () => {
+
+    cy.get("#scroll-vertical button")
+        .should("not.be.visible");
+
+    cy.get("#scroll-vertical button")
+        .scrollIntoView()
+        .should("be.visible");
+
+});
+
+Then("Do both scrolls and View Button", () => {
+
+    cy.get("#scroll-both button")
+        .should("not.be.visible");
+
+    cy.get("#scroll-both button")
+        .scrollIntoView()
+        .should("be.visible");
+
+});
+
+Then("Scroll to {int} of Horizontal scroll", (amount) => {
+    cy.get("#scrollable-horizontal")
+        .scrollTo(amount);
+});
+
+Then("Scroll to {string} of Vertical scroll", (position) => {
+    cy.get("#scrollable-vertical")
+        .scrollTo(position);
+});
+
+Then("Scroll to {string} with options", (position) => {
+    cy.get("#scrollable-both")
+        .scrollTo(position, {
+            easing: 'linear',
+            duration: 2000
+        });
+});
+
+Then("Trigger {string} event and set the value to {int}", (eventName, value) => {
+
+    cy.get(".trigger-input-range")
+        .invoke("val", value)
+        .trigger(eventName)
+        .get("input[type=range]").siblings("p")
+            .should("have.text", value);
+});
